@@ -1,3 +1,8 @@
+# Optimized by ci-cost (https://github.com/mariotavarez/ci-cost)
+# Applied 1 optimization:
+# - [MEDIUM] Add concurrency group to "behave_pull_request.yml"
+# Estimated savings: ~2 min/run
+#
 name: PR - Test Councils
 
 on:
@@ -9,6 +14,10 @@ on:
       - "**/*.md"
       - "uk_bin_collection_api_server/**"
 
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   setup:
     name: Setup Environment
