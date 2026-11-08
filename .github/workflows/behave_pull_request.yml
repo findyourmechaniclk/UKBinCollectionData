@@ -26,6 +26,14 @@ jobs:
         with:
           python-version: 3.14
 
+      - name: Cache Poetry dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
+
       - name: Install Dependencies
         run: make install-dev
 
@@ -76,6 +84,14 @@ jobs:
       - name: Configure Poetry to use the active interpreter
         run: poetry config virtualenvs.prefer-active-python true
 
+      - name: Cache Poetry dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
+
       - name: Install Dependencies
         run: make install-dev
 
@@ -110,6 +126,14 @@ jobs:
 
       - name: Configure Poetry to use the active interpreter
         run: poetry config virtualenvs.prefer-active-python true
+
+      - name: Cache Poetry dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
 
       - name: Install Dependencies
         run: make install-dev
@@ -151,6 +175,14 @@ jobs:
 
       - name: Configure Poetry to use the active interpreter
         run: poetry config virtualenvs.prefer-active-python true
+
+      - name: Cache Poetry dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
 
       - name: Install Dependencies
         run: make install-dev
